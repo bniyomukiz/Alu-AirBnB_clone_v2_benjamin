@@ -6,7 +6,7 @@ archive to the web servers
 
 from fabric.api import put, run, env
 from os.path import exists
-env.hosts = ['18.205.245.245', '54.208.57.96']
+env.hosts = ['3.92.181.72', '44.201.240.144']
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/school'
 
