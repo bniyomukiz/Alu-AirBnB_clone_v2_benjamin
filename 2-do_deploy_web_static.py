@@ -6,15 +6,12 @@ archive to the web servers
 
 from fabric.api import put, run, env
 from os.path import exists
-env.hosts = ['18.205.245.245', '54.208.57.96']
-env.user = 'ubuntu'
-env.key_filename = '~/.ssh/school'
+env.hosts = ['142.44.167.228', '144.217.246.195']
 
 
 def do_deploy(archive_path):
     """distributes an archive to the web servers"""
     if exists(archive_path) is False:
-        print("archive not present")
         return False
     try:
         file_n = archive_path.split("/")[-1]
@@ -29,10 +26,5 @@ def do_deploy(archive_path):
         run('rm -rf /data/web_static/current')
         run('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
         return True
-    except Exception as e:
-        print(e)
+    except:
         return False
-if __name__ == "__main__":
-    import sys
-    file = sys.argv[1].strip()
-    print(do_deploy(file))
